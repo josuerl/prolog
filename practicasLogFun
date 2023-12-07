@@ -1,0 +1,8 @@
+(defun tienda()
+    (princ "Dame el numero de pantalones: ")
+    (setq nump (read))
+    (case nump
+    ((and (<5)) (princ "\a precio normal"))
+    ((and (<= nump 5)) (princ "\a precio normal"))
+    )
+)
