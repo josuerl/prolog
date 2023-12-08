@@ -1,3 +1,10 @@
+#|
+Este código define una serie de funciones donde cada uno esta hecha para determinar el volumen de una figura
+ |#
+
+#|
+1.volumen de un cubo
+|#
 (
     defun cubo()
     (print "--- VOLUMEN DE UN CUBO ---")
@@ -8,6 +15,9 @@
     (princ volumen)
 )
 
+#|
+2.volumen de un prisma
+|#
 (
     defun prisma()
     (print "--- VOLUMEN DE UN PRISMA ---")
@@ -20,6 +30,9 @@
     (princ volumen)
 )
 
+#|
+3.volumen de un paralepipedo
+|#
 (
     defun paralepipedo()
     (print "--- VOLUMEN DE UN PRALEPIPEDO ---")
@@ -34,6 +47,9 @@
     (princ volumen)
 )
 
+#|
+4.volumen de una piramide
+|#
 (
     defun piramide()
     (print "--- VOLUMEN DE UNA PIRAMIDE ---")
@@ -46,6 +62,9 @@
     (princ volumen)
 )
 
+#|
+5.volumen de un cilindro
+|#
 (
     defun cilindro()
     (print "--- VOLUMEN DEL CILINDRO ---")
@@ -58,6 +77,9 @@
     (princ volumen)
 )
 
+#|
+6.volumen de un cono
+|#
 (
     defun cono()
     (print "--- VOLUMEN DEL CONO ---")
@@ -70,6 +92,9 @@
     (princ volumen)
 )
 
+#|
+7.volumen de una esfera
+|#
 (
     defun esfera()
     (print "--- VOLUMEN DE UNA ESFERA ---")
@@ -80,6 +105,9 @@
     (princ volumen)
 )
 
+#|
+8.volumen de un tetraedo
+|#
 (
     defun tetraedo()
     (print "--- VOLUMEN DE UN TETRAEDO ---")
@@ -90,6 +118,9 @@
     (princ volumen)
 )
 
+#|
+9.volumen de un pismahex
+|#
 (
     defun prismahex()
     (print "--- VOLUMEN DE UN PRISMA HEXAGONAL ---")

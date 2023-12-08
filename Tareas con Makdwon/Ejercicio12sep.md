@@ -1,3 +1,6 @@
+#|
+Ejercicio hecho el 12 deseptiembr en clase
+ |#
 (defun recorre(lista)
     (format t "~A~> ~% ~A" (car lista))
     (if (endp lista)

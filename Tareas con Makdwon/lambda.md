@@ -1,3 +1,11 @@
+#|
+Este código se establece con 5 areas y 5 volumenes pero con funciones lambda
+ |#
+
+
+#|
+1.area cuadrado
+|#
 (
     defvar *cuadrado*
     (lambda ()
@@ -10,6 +18,9 @@
     )
 )
 
+#|
+2.area rectangulo
+|#
 (
     defvar *rectangulo*
     (lambda ()
@@ -24,6 +35,9 @@
     )
 )
 
+#|
+3.area triangulo
+|#
 (
     defvar *triangulo*
     (lambda ()
@@ -38,6 +52,9 @@
     )
 )
 
+#|
+4.area circulo
+|#
 (
     defvar *circulo*
     (lambda()
@@ -50,6 +67,9 @@
     )
 )
 
+#|
+5.area trapecio
+|#
 (
     defvar *trapecio*
     (lambda ()
@@ -66,6 +86,9 @@
     )
 )
 
+#|
+6.volumen de un cubo
+|#
 (
     defvar *cubo*
     (lambda ()
@@ -78,6 +101,9 @@
     )
 )
 
+#|
+7.volumen de un prisma
+|#
 (
     defvar *prisma*
     (lambda ()
@@ -92,6 +118,9 @@
     )
 )
 
+#|
+8.volumen de un paralepipedo
+|#
 (
     defvar *paralepipedo*
     (lambda ()
@@ -108,6 +137,9 @@
     )
 )
 
+#|
+9.volumen de una piramide
+|#
 (
     defvar *piramide*
     (lambda ()
@@ -122,6 +154,9 @@
     )
 )
 
+#|
+10.volumen de un cilindro
+|#
 (
     defvar *cilindro*
     (lambda ()

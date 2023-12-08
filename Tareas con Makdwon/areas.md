@@ -1,3 +1,10 @@
+#|
+Este código define una serie de funciones donde cada uno esta hecha pra determinar el area de una figura
+ |#
+
+#|
+1.area de un cuadrado
+|#
 (
     defun cuadrado()
     (print "--- Area del cuadrado ---")
@@ -8,6 +15,9 @@
     (princ num2)
 )
 
+#|
+2.area de un rectangulo
+|#
 (
     defun rectangulo()
     (print "--- Area del rectangulo ---")
@@ -20,6 +30,9 @@
     (princ num3)
 )
 
+#|
+3.area de un tringulo
+|#
 (
     defun triangulo()
     (print "--- Area del triangulo ---")
@@ -32,6 +45,9 @@
     (princ num3)
 )
 
+#|
+4.area de un circulo
+|#
 (
     defun circulo()
     (print "--- AREA DEL CIRCULO ---")
@@ -42,6 +58,9 @@
     (princ res)
 )
 
+#|
+5.area de un trapecio
+|#
 (
     defun trapecio()
     (print "--- AREA DEL TRAPECIO ---")
@@ -56,6 +75,9 @@
     (princ area)
 )
 
+#|
+6.area de un rombo
+|#
 (
     defun rombo()
     (print "--- AREA DEL ROMBO ---")
@@ -68,6 +90,9 @@
     (princ area)
 )
 
+#|
+7.area de un paralelogramo
+|#
 (
     defun paralelogramo()
     (print "--- AREA DEL PARALELOGRAMO ---")
@@ -80,6 +105,9 @@
     (princ area)
 )
 
+#|
+8.area de un hexagono
+|#
 (
     defun hexagonor()
     (print "--- AREA DEL HEXAGONO REGULAR ---")
@@ -92,6 +120,9 @@
     (princ area)
 )
 
+#|
+9.area de un pentagono
+|#
 (
     defun pentagono()
     (print "--- AREA DE UN PENTAGONO ---")
