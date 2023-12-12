@@ -168,6 +168,7 @@ invocador:-	writeln('Hola invocador, bienvenido a League of Legends, te dare la 
 
 	% templates comparativos de la clamidia
 	template([s(_), es, un, sintoma], [flagSintoma], [0]).
+	template([tengo, s(_), ',', (_), y, (_), '.'], [flagMultisintomas], [1, 3, 5]).
 	template([s(_), es, una, causa], [flagCausas], [0]).
 	template([s(_), es, un, especialista], [flagEspecialista], [0]).
 	template([s(_), es, un, medicamento], [flagMedicamento], [0]).
@@ -184,30 +185,37 @@ invocador:-	writeln('Hola invocador, bienvenido a League of Legends, te dare la 
 	% Hechos y flag de sintomas de la clamidia
 	sintomaIs(X, R):- sintoma_clamidia(X), R = [si, X, es, un, sintoma, del, clamidia].
     sintomaIs(X, R):- \+sintoma_clamidia(X), R = [X, no, es, un, sintoma, del, clamidia].
-	sintoma_clamidia('Dolor o ardor al orinar').
-	sintoma_clamidia('Secrecion del pene').
-	sintoma_clamidia('Inflamacion testicular').
-	sintoma_clamidia('Dolor testicular').
-	sintoma_clamidia('Dolor rectal').
+	sintoma_clamidia('Dolor_o_ardor_al_orinar').
+	sintoma_clamidia('Secrecion_del_pene').
+	sintoma_clamidia('Inflamacion_testicular').
+	sintoma_clamidia('Dolor_testicular').
+	sintoma_clamidia('Dolor_rectal').
 
 	% Hechos y flag de sintomas de la clamidiaM
-	sintoma_clamidiam('Dolor o ardor al orinar').
-	sintoma_clamidiam('Dolor abdominal bajo').
-	sintoma_clamidiam('Secrecion vaginal anormal').
-	sintoma_clamidiam('Sangrado entre periodos').
-	sintoma_clamidiam('Dolor durante las relaciones sexuales').
-	sintoma_clamidiam('Dolor pelvico').
+	sintoma_clamidiam('Dolor_o_ardor_al_orinar').
+	sintoma_clamidiam('Dolor_abdominal_bajo').
+	sintoma_clamidiam('Secrecion_vaginal_anormal').
+	sintoma_clamidiam('Sangrado_entre_periodos').
+	sintoma_clamidiam('Dolor_durante_las_relaciones_sexuales').
+	sintoma_clamidiam('Dolor_pelvico').
 	
+	multisintomasIs(X, Y, Z, R):- multi_sintoma(X, Y, Z), R = [si, X, Y, y, Z, son, sintomas, de, clamidia].
+	multisintomasIs(X, Y, Z, R):- \+multi_sintoma(X, Y, Z), R = [no, X, Y, y, Z, no, son, sintomas, de, clamidia].
+	multi_sintoma('Dolor_o_ardor_al_orinar', 'Secrecion_del_pene', 'Inflamacion_testicular').
+	multi_sintoma('Dolor_pelvico', 'Dolor_durante_las_relaciones_sexuales', 'Secrecion_vaginal_anormal').
+	multi_sintoma('Sangrado_entre_periodos', 'Dolor_pelvico', 'Dolor_abdominal_bajo').
+	multi_sintoma('Secrecion_del_pene', 'Dolor_rectal', 'Dolor_testicular').
+	multi_sintoma('Dolor_testicular', 'Inflamacion_testicular', 'Secrecion_del_pene').
 	% Hechos y flag de especialistas
 	especialistaIs(X, R):- especialista_clamidia(X), R = [si, X, es, un, especialista, apto, para, diagnosticar, el, clamidia].
     especialistaIs(X, R):- \+especialista_clamidia(X), R = [X, no, es, un, especialista, apto, para, diagnosticar, el, clamidia].
-	especialista_clamidia('Medico general').
+	especialista_clamidia('Medico_general').
 	especialista_clamidia('Ginecologo').
 	especialista_clamidia('Urologo').
 	especialista_clamidia('Enfermero').
-    especialista_clamidia('Clinicas de salud sexual').
-    especialista_clamidia('Departamento de salud local').
-    especialista_clamidia('Clinicas especializadas en enfermedades de transmision sexual (ETS)').
+    especialista_clamidia('Clinicas_de_salud_sexual').
+    especialista_clamidia('Departamento_de_salud_local').
+    especialista_clamidia('Clinicas_especializadas_en_enfermedades_de_transmision_sexual_(ETS)').
 
 	% Hechos de medicamentos
 	medicamentoIs(X, R):- medicamento_clamidia(X), R = [si, X, es, un, medicamento, para, tratar, el, clamidia].
@@ -218,10 +226,23 @@ invocador:-	writeln('Hola invocador, bienvenido a League of Legends, te dare la 
 	medicamento_clamidia('Ofloxacina').
 	
     % Hechos del tratamiento 
-	tratamiento_clamidia('Ir con el medico').
-	tratamiento_clamidia('Seguir con el tratamiento').
-	tratamiento_clamidia('No tener relaciones sexuales').
-	tratamiento_clamidia('Monitoreo medico').
+	tratamiento_clamidia('Ir_con_el_medico').
+	tratamiento_clamidia('Seguir_con_el_tratamiento').
+	tratamiento_clamidia('No_tener_relaciones_sexuales').
+	tratamiento_clamidia('Monitoreo_medico').
+
+% clamidia multisintoma
+replace0([I,J,K|_], Input, _, Resp, R):-
+	nth0(I, Input, Atom),
+	nth0(0, Resp, X),
+	X == flagMultisintomas,
+	nth0(J, Input, Atom2),
+	nth0(0, Resp, Y),
+	Y == flagMultisintomas,
+	nth0(K, Input, Atom3),
+	nth0(0, Resp, Z),
+	Z == flagMultisintomas,
+	multisintomasIs(Atom, Atom2, Atom3, R).
 
 % clamidia Sintomas:
 replace0([I|_], Input, _, Resp, R):-
@@ -525,18 +546,32 @@ replace0([I|_], Input, _, Resp, R):-
     % templates comparativos
 	% 
 	template([s(_), es, un, campeon, de, piltover], [flagPILTOVER], [0]).
+	template([s(_), es, piltover], [flagPILTOVER], [0]).
     template([s(_), es, un, campeon, de, aguas, turbias], [flagAguas_turbias], [0]).
+	template([s(_), es, aguas, turbias], [flagAguas_turbias], [0]).
     template([s(_), es, un, campeon, de, ciudad, de, bandel], [flagCiudad_de_bandel], [0]).
+	template([s(_), es, ciudad, de, bandel], [flagCiudad_de_bandel], [0]).
     template([s(_), es, un, campeon, de, demacia], [flagDemacia], [0]).
+	template([s(_), es, demacia], [flagDemacia], [0]).
     template([s(_), es, un, campeon, del, vacio], [flagVacio], [0]).
+	template([s(_), es, vacio], [flagVacio], [0]).
     template([s(_), es, un, campeon, del, freljord], [flagFreljord], [0]).
+	template([s(_), es, freljord], [flagFreljord], [0]).
     template([s(_), es, un, campeon, de, las, islas, de, las, sombras], [flagIslas_de_las_sombras], [0]).
+	template([s(_), es, islas, de, las, sombras], [flagIslas_de_las_sombras], [0]).
     template([s(_), es, un, campeon, de, ixtal], [flagIxtal], [0]).
-    template([s(_), es, un, campeon, de, nonia], [flagJonia], [0]).
+	template([s(_), es, |], [flagIxtal], [0]).
+    template([s(_), es, un, campeon, de, jonia], [flagJonia], [0]).
+	template([s(_), es, jonia], [flagJonia], [0]).
     template([s(_), es, un, campeon, de, noxus], [flagNoxus], [0]).
+	template([s(_), es, noxus], [flagNoxus], [0]).
     template([s(_), es, un, campeon, de, shurima], [flagShurima], [0]).
+	template([s(_), es,  shurima], [flagShurima], [0]).
     template([s(_), es, un, campeon, de, targon], [flagTargon], [0]).
+	template([s(_), es, targon], [flagTargon], [0]).
 	template([s(_), es, un, campeon, de, zaun], [flagZaun], [0]).
+	template([s(_), es, de, zaun], [flagZaun], [0]).
+
 
 	% templates default
 	template(_, ['No te he comprendido, dime algo que me sirva'], []). 
